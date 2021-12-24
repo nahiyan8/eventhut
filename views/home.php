@@ -3,15 +3,6 @@
 include 'models/Event.php';
 
 $featured = [
-    new Event(
-        123,
-        "Virtual Author Talk: Traci Bliss on \"Big Basin Redwood Forest\"",
-        "LECTURE / READING",
-        
-        DateTime::createFromFormat("", )
-        
-        "Bill Lane Center for the American West",
-    )
 ];
 
 ?>
