@@ -9,6 +9,8 @@
 // Autoload the libraries installed by Composer.
 require __DIR__ . '/vendor/autoload.php';
 
+// Set up router.
+
 // Create Router instance
 $router = new \Bramus\Router\Router();
 
@@ -16,11 +18,14 @@ $router = new \Bramus\Router\Router();
 $router->get('/', function() {
     include 'views/home.php';
 });
-$router->get('/signin', function() {
+$router->match('GET|POST', '/signin', function() {
     include 'views/signin.php';
 });
-$router->get('/signup', function() {
+$router->match('GET|POST', '/signup', function() {
     include 'views/signup.php';
+});
+$router->get('/signup/completed', function() {
+    include 'views/signup_completed.php';
 });
 $router->get('/events', function() {
     include 'views/event_listing.php';
@@ -46,6 +51,31 @@ $router->get('/users', function() {
 $router->get('/users/(\d+)', function($user_id) {
     include 'views/user_view.php';
 });
+// $router->before('GET|POST', '/admin/.*', function() {
+//     if (!isset($_SESSION['user'])) {
+//         header('location: /signin');
+//         exit();
+//     }
+// });
+
+// Set up database ORM with RedBean.
+use \RedBeanPHP\R as R;
+$db_username = 'root';
+$db_password = '';
+R::setup('mysql:host=localhost;dbname=eventhut', $db_username, $db_password);
+
+$db = R::getDatabaseAdapter()->getDatabase()->getPDO();
+
+// Set up authentication with PHP-Auth.
+use \Delight\Auth\Auth as Auth;
+$auth = new Auth($db);
+
+// Store important instances in superglobals to be allowed to access them from anywhere.
+$GLOBALS['db'] = $db;
+$GLOBALS['auth'] = $auth;
 
 // Run it!
 $router->run();
+
+// Clean-up
+R::close();

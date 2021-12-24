@@ -103,6 +103,8 @@ $user = [
             </div>
         </section>
     </main>
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
 </body>
 
 </html>

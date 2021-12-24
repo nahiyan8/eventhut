@@ -51,6 +51,8 @@ EOT,
 			<?= $event['open_to'] ?>
 		</div>
 	</main>
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 {
     "require": {
         "bramus/router": "~1.6",
-        "delight-im/auth": "^8.3"
+        "delight-im/auth": "^8.3",
+        "gabordemooij/redbean": "dev-master"
     }
 }

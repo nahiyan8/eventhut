@@ -85,6 +85,8 @@
       </form>
     </div>
   </main>
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
 </body>
 
 </html>
