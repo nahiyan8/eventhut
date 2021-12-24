@@ -1,3 +1,10 @@
+<?php
+  $description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  Illo consectetur necessitatibus, delectus debitis fugit reprehenderit, 
+  quibusdam iure alias error voluptatum non ab consequatur quae sed modi. 
+  Qui maxime voluptate nihil.';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -12,6 +19,7 @@
 <body class="d-flex flex-column">
   <!-- Navbar -->
   <?php include 'components/navbar.php'; ?>
+  
   <!-- Main -->
   <main class="flex-grow-1 d-flex flex-column align-items-center mb-5">
     <br><br>
@@ -25,7 +33,7 @@
         <div class="col-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo consec.</div>
         <div class="col-2"></div>
         <div class="col-2">Description</div>
-        <div class="col-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo consectetur necessitatibus, delectus debitis fugit reprehenderit, quibusdam iure alias error voluptatum non ab consequatur quae sed modi. Qui maxime voluptate nihil.</div>
+        <div class="col-8"><?= $description; ?></div>
         <div class="col-2"></div>
         <div class="col-2">Time</div>
         <div class="col-8">Jan 20, 2022 9:30 pm BDT</div>
