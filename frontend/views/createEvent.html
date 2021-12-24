@@ -33,45 +33,47 @@
   </head>
   
   <body class="text-center">
+    <div>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Event Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+            </ul>
+            <button class="btn btn-outline-success" type="submit">logged in as username</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+<br><br><br>
 
-  <div class="container" col="4" offset="4">
+    <div class="container" col="4" offset="4">
     
-    <main class="form-signin">
-      <form>
-        <h1 class="h3 mb-3 fw-normal">Create an Event</h1>
-
+      <main class="form-signin">
+        <form>
+          <h1 class="h3 mb-3 fw-normal">Create an Event</h1>
             <div class="form-floating">
-               <!-- <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"> -->
-                  <!-- <label for="floatingInput">Email address</label> -->
-                  <input type="text" class="form-control" id="eventName" name="eventName">
-                  <label for="eventName">Event name:</label>
+              <input type="text" class="form-control" id="eventName" name="eventName">
+              <label for="eventName">Event name:</label>
             </div>
-    <div class="form-floating">
-        <!-- <input type="text" class="form-control" id="eventName" name="eventName"> -->
-        <textarea rows="4" cols="50" name="comment" form="usrform">
-            Enter text here...</textarea>
-        <label for="eventName">Event det</label>
+            <br>
+            <div class="form-floating">
+              <textarea rows="4" cols="50" name="comment" form="usrform">Enter text here...</textarea>
+              <label for="eventName"></label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            <!--<div class="register-form">
+              <a class="btn btn-primary" href="register.html">submit</a>
+            </div>-->
+        </form>
+      </main>
     </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <div class="register-form">
-      <p>New user?
-      </p>
-      <a class="btn btn-primary" href="register.html">  
-       Click Me 
-      </a>
-
-    
-
-    </div>
-  </form>
-</main>
-</div>
     
   </body>
 </html>
