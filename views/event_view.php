@@ -37,18 +37,27 @@ EOT,
 	<?php include 'components/navbar.php'; ?>
 	<!-- Main -->
 	<main class="container col-12 col-md-8 offset-md-2 mt-4">
+		<div class="container-fluid bg-dark">
+			<h2 class="event-title"><?= $event['title'] ?></h2>
+		</div>
 		<div class="px-4 py-2 bg-body border">
-			<h1><?= $event['title'] ?></h1>
-			<?= $event['description'] ?>
-			<?= $event['type'] ?>
-			<?= $event['title'] ?>
-			<?= $event['date'] ?>
-			<?= $event['time'] ?>
-			<?= $event['image_url'] ?>
-			<?= $event['location'] ?>
-			<?= $event['email'] ?>
-			<?= $event['phone'] ?>
-			<?= $event['open_to'] ?>
+			<img class="event-image" src="<?= $event['image_url'] ?>"/><br><br>
+			<h6>Event Type</h6>
+			<p><?= $event['type'] ?></p>
+			<h6>Event Details</h6>
+			<p><?= $event['description'] ?></p>
+			<h6>Event Time</h6>
+			<p><?= $event['time'] ?></p>
+			<h6>Event date</h6>
+			<p><?= $event['date'] ?></p>
+			<h6>Event location</h6>
+			<p><?= $event['location'] ?></p>
+			<h6>Email</h6>
+			<p><?= $event['email'] ?></p>
+			<h6>Phone</h6>
+			<p><?= $event['location'] ?></p>
+			<h6>Open to</h6>
+			<p><?= $event['open_to'] ?></p>
 		</div>
 	</main>
     <!-- Footer -->

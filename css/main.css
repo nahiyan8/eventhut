@@ -140,3 +140,12 @@ mark {
 .dark-color {
   color: #20247b;
 }
+
+/* event */
+.event-title {
+  color: #fff;
+  padding: 10px;
+}
+.event-image{
+  height: 400px;
+}
