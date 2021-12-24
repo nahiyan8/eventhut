@@ -3,7 +3,15 @@
 include 'models/Event.php';
 
 $featured = [
-    new Event()
+    new Event(
+        123,
+        "Virtual Author Talk: Traci Bliss on \"Big Basin Redwood Forest\"",
+        "LECTURE / READING",
+        
+        DateTime::createFromFormat("", )
+        
+        "Bill Lane Center for the American West",
+    )
 ];
 
 ?>
@@ -20,9 +28,14 @@ $featured = [
 
 <body>
     <!-- Navbar -->
-    <?php include '../components/navbar.php'; ?>
+    <?php include 'components/navbar.php'; ?>
+        <!-- Banner -->
+        <div class="container-fluid d-flex flex-column justify-content-center align-items-center" id="home-banner">
+            <h1 class="align-self-center text-center text-white fw-light fs-1"><i class="fa fa-university me-2" aria-hidden="true"></i> University Events</h1>
+        </div>
     <!-- Main -->
-    <main class="container col-12 col-md-8 offset-md-2 mt-4">
+    <main class="container col-12 col-md-8 offset-md-2 bg-dark">
+        <!-- Featured events -->
         <div class="d-grid">
             <?php foreach ($featured as $event) { ?>
             <a href="/events/<?= $event->id ?>">
@@ -30,7 +43,6 @@ $featured = [
                     <img src="<?= $event->image_url ?>" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><?= $event->title ?></h5>
-                        <p class="card-text"><?= $event->short_desc ?></p>
                         <p class="card-text"><small class="text-muted"><?= $event->updated_at ?></small></p>
                     </div>
                 </div>

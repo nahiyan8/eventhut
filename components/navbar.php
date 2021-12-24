@@ -1,20 +1,21 @@
 <?php
 
 $pages = [
-    '/views/home.php' => 'Home',
-    '/views/event.php' => 'Event',
-    '/views/signin.php' => 'Sign in',
-    '/views/signup.php' => 'Sign up',
-    '/views/user_profile.php' => 'User Profile',
-    '/views/event_create.php' => 'Event Create',
-    '/views/event_listing.php' => 'Event Listing',
-    '/views/event_manage.php' => 'Event Manage',
-    '/views/event_register.php' => 'Event Register',
-    '/views/event_attendees.php' => 'Event Attendees'
+    '/' => 'Home',
+    '/signin' => 'Sign in',
+    '/signup' => 'Sign up',
+    '/users' => 'All Users',
+    '/users/123' => 'User View',
+    '/events' => 'All Events',
+    '/events/create' => 'Event Create',
+    '/events/123' => 'Event View',
+    '/events/123/manage' => 'Event Manage',
+    '/events/123/register' => 'Event Register',
+    '/events/123/attendees' => 'Event Attendees'
 ];
 
 ?>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-dark">
     <div class="container-fluid">
         <div class="container d-flex flex-nowrap">
             <a class="navbar-brand" href="#">EventHut</a>

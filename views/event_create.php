@@ -11,7 +11,7 @@
 
 <body>
   <!-- Navbar -->
-  <?php include '../components/navbar.php'; ?>
+  <?php include 'components/navbar.php'; ?>
   <!-- Main -->
   <main class="container col-12 col-md-10 offset-md-2">
   </main>

@@ -28,7 +28,7 @@ $user = [
 
 <body>
     <!-- Navbar -->
-    <?php include '../components/navbar.php'; ?>
+    <?php include 'components/navbar.php'; ?>
     <!-- Main -->
     <main class="container col-12 col-md-8 offset-md-2 bg-body border px-4 py-2">
         <section class="section about-section gray-bg" id="about">

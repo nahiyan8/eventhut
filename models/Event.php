@@ -3,26 +3,26 @@
 class Event
 {
     // General details
-    public $id;
-	public $title;
-	public $category;
-    public $department;
-	public $datetime;
-	public $short_desc;
-	public $long_desc;
-	public $image_url;
-	public $location;
-    public $status;
+    public int $id;
+	public string $title;
+	public string $category;
+	public DateTime $datetime_begin;
+	public DateTime $datetime_end;
+	public string $description;
+	public string $image_url;
+	public string $location;
+    public string $status;
     
     // Sponsor details
-	public $email;
-	public $phone;
-	public $open_to;
+	public string $sponder;
+	public string $email;
+	public string $phone;
+	public string $open_to;
     
     // Ownership
-    public $organizer_id;
+    public int $organizer_id;
 	
 	// Timekeeping
-	public $created_at;
-	public $updated_at;
+	public DateTime $created_at;
+	public DateTime $updated_at;
 }

@@ -11,7 +11,7 @@
 
 <body class="d-flex flex-column">
   <!-- Navbar -->
-  <?php include '../components/navbar.php'; ?>
+  <?php include 'components/navbar.php'; ?>
   <!-- Main -->
   <main class="flex-grow-1 d-flex flex-column align-items-center mb-5">
     <div class="container col-12 col-lg-4 offset-lg-4 flex-grow-1 d-flex align-items-center">

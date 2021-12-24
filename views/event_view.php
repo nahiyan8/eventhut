@@ -34,7 +34,7 @@ EOT,
 
 <body>
 	<!-- Navbar -->
-	<?php include '../components/navbar.php'; ?>
+	<?php include 'components/navbar.php'; ?>
 	<!-- Main -->
 	<main class="container col-12 col-md-8 offset-md-2 mt-4">
 		<div class="px-4 py-2 bg-body border">
