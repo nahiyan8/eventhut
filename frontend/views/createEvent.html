@@ -11,7 +11,7 @@
     <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"  type="text/css" href="../css/login.css">
 
-    <title>Login</title>
+    <title>Create Event</title>
 
     <style>
       .bd-placeholder-img {
@@ -33,34 +33,45 @@
   </head>
   
   <body class="text-center">
-   <div class="container" col="4" offset="4">
+
+  <div class="container" col="4" offset="4">
     
     <main class="form-signin">
       <form>
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal">Create an Event</h1>
 
             <div class="form-floating">
-               <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Email address</label>
+               <!-- <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"> -->
+                  <!-- <label for="floatingInput">Email address</label> -->
+                  <input type="text" class="form-control" id="eventName" name="eventName">
+                  <label for="eventName">Event name:</label>
             </div>
-            <div class="form-floating">
-             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
-            </div>
+    <div class="form-floating">
+        <!-- <input type="text" class="form-control" id="eventName" name="eventName"> -->
+        <textarea rows="4" cols="50" name="comment" form="usrform">
+            Enter text here...</textarea>
+        <label for="eventName">Event det</label>
+    </div>
 
-            <div class="checkbox mb-3">
-              <label>
-               <input type="checkbox" value="remember-me"> Remember me
-              </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-          <div class="register-form">
-            <p>New user?</p>
-            <a class="btn btn-primary" href="register.html"> Click Me </a>
-          </div>
-      </form>
-    </main>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <div class="register-form">
+      <p>New user?
+      </p>
+      <a class="btn btn-primary" href="register.html">  
+       Click Me 
+      </a>
 
-  </div>
- </body>
- </html>
+    
+
+    </div>
+  </form>
+</main>
+</div>
+    
+  </body>
+</html>
