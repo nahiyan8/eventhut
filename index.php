@@ -15,8 +15,9 @@ require __DIR__ . '/secrets.php';
 R::setup('mysql:host=localhost;dbname=eventhut', $db_username, $db_password);
 R::freeze(false);
 // R::startLogging();
-\RedBeanPHP\Util\DispenseHelper::setEnforceNamingPolicy( FALSE );
+\RedBeanPHP\Util\DispenseHelper::setEnforceNamingPolicy(false);
 $db = R::getDatabaseAdapter()->getDatabase()->getPDO();
+
 
 // Set up authentication with PHP-Auth.
 use \Delight\Auth\Auth as Auth;
@@ -24,6 +25,21 @@ $auth = new Auth($db);
 
 // Set up router.
 $router = new \Bramus\Router\Router();
+
+// Error aborter
+function abort(int $code, string $message = null) {
+    $error_handlers = [
+        401 => '/signin',    // not authenticated
+        403 => '/error_403', // not authorized
+        404 => '/error_404', // not found
+    ];
+    // http_response_code($code);
+    if (array_key_exists($code, $error_handlers)) {
+        $msg_param = is_null($message) ? '' : ('?error_msg=' . $message);
+        header('Location: ' . $error_handlers[$code] . $msg_param);
+    }
+    exit();
+}
 
 // Define routes.
 $router->get('/', function() {
@@ -58,28 +74,21 @@ $router->get('/events/(\d+)/register/completed', function() {
 });
 $router->match('GET|POST', '/events/(\d+)/manage', function($event_id) use ($auth) {
     try {
-        if ($auth->isLoggedIn()) {
-            $user_id = $auth->getUserId();
-            $is_admin = $auth->admin()->doesUserHaveRole($user_id, \Delight\Auth\Role::ADMIN);
-            
-            $event = R::load('events', $event_id);
-            if ($event->id === 0) {
-                http_response_code(404);
-                exit();
-            }
-            
-            if ($is_admin || $user_id == $event->organizer_id) {
-                include 'views/event_manage.php';
-            }
-            else {
-                http_response_code(403);
-                die('You are not authorized to access this page');
-            }
-        }
-        else {
-            header('Location: /signin?error_msg=You must be an event organizer in order to access this page');
-            exit();
-        }
+        if (!$auth->isLoggedIn())
+            abort(401, 'You must be an event organizer in order to access this page');
+        
+        $user_id = $auth->getUserId();
+        $is_admin = $auth->admin()->doesUserHaveRole($user_id, \Delight\Auth\Role::ADMIN);
+        
+        $event = R::load('events', $event_id);
+        
+        if ($event->id === 0)
+            abort(404);
+        
+        if (!$is_admin && $user_id != $event->organizer_id) 
+            abort(403);
+        
+        include 'views/event_manage.php';
     }
     catch (\Delight\Auth\UnknownIdException $e) {
         die('Unknown user ID');
@@ -96,26 +105,36 @@ $router->get('/users/(\d+)', function($user_id) {
 });
 $router->before('GET|POST', '/admin(/.*)?', function() use ($auth) {
     try {
-        if ($auth->isLoggedIn()) {
-            $user_id = $auth->getUserId();
-            if ($auth->admin()->doesUserHaveRole($user_id, \Delight\Auth\Role::ADMIN)) {
-                include 'views/admin_dashboard.php';
-            }
-            else {
-                http_response_code(403);
-                die('You are not authorized to access this page');
-            }
+        if (!$auth->isLoggedIn())
+            abort(401, 'You must be an administrator in order to access this page');
+        
+        $user_id = $auth->getUserId();
+        if (!$auth->admin()->doesUserHaveRole($user_id, \Delight\Auth\Role::ADMIN))
+            abort(403);
+
+        $subpages = [
+            '/admin/users'   => 'views/admin_users.php',
+            '/admin/events'  => 'views/admin_events.php',
+            '/admin/forms'   => 'views/admin_forms.php',
+            '/admin/uploads' => 'views/admin_uploads.php'
+        ];
+
+        if (array_key_exists($_SERVER['REQUEST_URI'], $subpages)) {
+            include $subpages[$_SERVER['REQUEST_URI']];
         }
-        else {
-            // echo 'The user is not signed in';
-            header('Location: /signin?error_msg=You must be an administrator in order to access this page');
+        else if ($_SERVER['REQUEST_URI'] == '/admin') {
+            header('Location: /admin/users');
             exit();
         }
+        else
+            abort(404);
     }
     catch (\Delight\Auth\UnknownIdException $e) {
         die('Unknown user ID');
     }
 });
+$router->get('/error_403', function() { include 'views/error_403.php'; });
+$router->get('/error_404', function() { include 'views/error_404.php'; });
 
 // Store important instances in superglobals to be allowed to access them from anywhere.
 $GLOBALS['db'] = $db;

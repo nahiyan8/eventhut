@@ -4,5 +4,6 @@ $auth = $GLOBALS['auth'];
 $auth->logOut();
 
 header('Location: /');
+exit();
 
 ?>

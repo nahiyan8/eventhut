@@ -11,19 +11,17 @@ if (!is_null($event_id)) {
     $event = eventFormat($event);
     
     if ($event->id === 0) {
-        http_response_code(404); // not found
+      abort(404);
     }
 }
 
 // Check login status
 $auth = $GLOBALS['auth'];
 if (!$auth->isLoggedIn()) {
-  http_response_code(401); // not authenticated
-  header('Location: /signin?error_msg=You must sign into your account first, before you can register for an event');
-  exit();
+  abort(401, 'You must sign into your account first, before you can register for an event');
 }
 $user_id = $auth->getUserId();
-$currentUser = R::load('profiles', $user_id);
+$currentUser = R::findOne('profiles', 'user_id = ?', [$user_id]);
 
 $is_already_registered = false;
 $error_msg = null;
@@ -119,10 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </div>
     <hr/>
-    <div class="container col-12 col-lg-6 offset-lg-3 mt-2 pt-4 border-top flex-grow-1 d-flex align-items-center">
+    <div class="container col-12 col-lg-6 offset-lg-3 mt-2 pt-4 border-top flex-grow-1 d-flex align-items-center justify-content-center">
       <?php if ($is_already_registered) { ?>
-        <h2 class="fs-2 text-muted mb-3">You have already registered for this event.</h2>
-      <?php } ?>
+        <h2 class="fs-2 text-center text-muted mb-3">You have already registered for this event.</h2>
+      <?php } else { ?>
       <form action="/events/<?= $event_id ?>/register" method="post" class="form row g-3" <?= $is_already_registered ? '' : 'disabled' ?>>
         <div class="col-md-6">
           <label for="firstName" class="form-label fw-bold">First Name</label>
@@ -165,6 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <button type="submit" class="btn btn-lg btn-primary d-block" id="eventRegisterButton">Register</button>
         </div>
       </form>
+      <?php } ?>
     </div>
   </main>
   <!-- Footer -->

@@ -16,19 +16,6 @@ foreach ($featured_ as $event) {
     array_push($featured, $event);
 }
 
-// $event = R::dispense( 'events' );
-// $event->id = 123;
-// $event->title = "Virtual Author Talk: Traci Bliss on \"Big Basin Redwood Forest\"";
-// $event->category = "LECTURE / READING";
-// $event->datetime_begin = new DateTime('2022-01-20T14:30:00');
-// $event->datetime_end = new DateTime('2022-01-20T15:30:00');
-// $event->sponsor_name = "Bill Lane Center for the American West";
-// $event->sponsor_email = "bill@example.com";
-// $event->sponsor_phone = "+1-234-5679";
-// $event->is_featured = TRUE;
-// $event->image_url = "/uploads/1.jpg";
-// R::store($event);
-
 ?>
 <!doctype html>
 <html lang="en">

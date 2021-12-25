@@ -9,23 +9,9 @@ if (!is_null($user_id)) {
         $profile->age = date_diff(new DateTime($profile->birthdate), new DateTime())->format('%y years old');
         $profile->birthdate = (new DateTime($profile->birthdate))->format('F jS, Y');
     } else {
-        http_response_code(404);
+        abort(404);
     }
 }
-
-// $profile = [
-//     'id' => 123,
-//     'name' => 'Jean-Claude Van Damme',
-//     'bio' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat',
-//     'email' => 'jcvdamme@example.com',
-//     'location' => 'California, USA',
-//     'phone' => '820-885-3321',
-//     'age' => 22,
-//     'birthdate' => '4th April 1998',
-//     'upcoming_events_count' => 500,
-//     'registered_events_count' => 150,
-//     'participated_events_count' => 850
-// ];
 
 ?>
 <!doctype html>

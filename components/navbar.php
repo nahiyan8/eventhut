@@ -6,27 +6,27 @@ $auth = $GLOBALS['auth'];
 
 if ($auth->isLoggedIn()) {
     $user_id = $auth->getUserId();
-    $currentUser = R::load('profiles', $user_id);
+    $currentUser = R::findOne('profiles', 'user_id = ?', [$user_id]);
     
     $is_admin = $auth->admin()->doesUserHaveRole($user_id, \Delight\Auth\Role::ADMIN);
 }
 
 $pages = [
-    '/' => 'Home',
-    '/events' => 'All Events',
-    '/users/1' => 'User View',
-    '/events/create' => 'Event Create',
-    '/events/123' => 'Event View',
-    '/events/123/manage' => 'Event Manage',
-    '/events/123/register' => 'Event Register',
-    '/admin' => 'Admin'
+    // '/' => 'Home',
+    // '/events' => 'All Events',
+    // '/users/1' => 'User View',
+    // '/events/create' => 'Event Create',
+    // '/events/123' => 'Event View',
+    // '/events/123/manage' => 'Event Manage',
+    // '/events/123/register' => 'Event Register',
+    // '/admin' => 'Admin'
 ];
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-dark">
     <div class="container-fluid">
         <div class="container d-flex justify-content-between">
-            <a class="navbar-brand" href="#">EventHut</a>
+            <a class="navbar-brand" href="/">EventHut</a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <?php

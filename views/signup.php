@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     header('Location: /signup/completed');
+    exit();
   }
   catch (\Delight\Auth\InvalidEmailException $e) {
     $error_msg = 'Invalid email address';

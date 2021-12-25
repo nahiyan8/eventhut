@@ -25,6 +25,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $auth->login($_POST['email'], $_POST['password'], $rememberDuration);
     
     header('Location: /');
+    exit();
   }
   catch (\Delight\Auth\InvalidEmailException $e) {
     $error_msg = 'Email is incorrect';
@@ -61,11 +62,11 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form action="/signin" method="post" class="form-signin text-center flex-grow-1">
         <h1 class="h3 mb-3 fw-normal">Sign in</h1>
         <div class="form-floating mt-4">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required value="<?= $_POST['email'] ?? '' ?>">
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mt-2">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
           <label for="floatingPassword">Password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Sign in</button>

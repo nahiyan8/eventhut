@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2021 at 10:31 AM
+-- Generation Time: Dec 25, 2021 at 06:41 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -71,7 +71,11 @@ CREATE TABLE `form_submissions` (
 --
 
 INSERT INTO `form_submissions` (`id`, `submitter_id`, `event_id`, `json`) VALUES
-(1, 1, 123, '{\"firstName\":\"Zulker Nayeen\",\"lastName\":\"Nahiyan\",\"email\":\"nahiyan02@gmail.com\",\"addToMailingList\":true,\"comments\":\"\"}');
+(2, 1, 123, '{\"firstName\":\"Sanzar Adnan\",\"lastName\":\"Alam\",\"email\":\"sanzar@example.com\",\"addToMailingList\":true,\"comments\":\"The redwood forest is one of the world&#039;s most precious ecologies.\"}'),
+(3, 4, 123, '{\"firstName\":\"Wile\",\"lastName\":\"Coyote\",\"email\":\"coyote@acme.com\",\"addToMailingList\":false,\"comments\":\"The road runner went in there! Into the forest! I saw it!\"}'),
+(4, 1, 1234, '{\"firstName\":\"Sanzar\",\"lastName\":\"Alam\",\"email\":\"sanzar@example.com\",\"addToMailingList\":true,\"comments\":\"The holidays are a great time to let off some steam!\"}'),
+(5, 2, 123, '{\"firstName\":\"Zulker\",\"lastName\":\"Nahiyan\",\"email\":\"zulker@example.com\",\"addToMailingList\":true,\"comments\":\"The red wood forest is amazing!\"}'),
+(8, 3, 1236, '{\"firstName\":\"Nazia\",\"lastName\":\"Haque\",\"email\":\"nazia@example.com\",\"addToMailingList\":true,\"comments\":\"Sculptures are made best with lots of thought &amp; care.\"}');
 
 -- --------------------------------------------------------
 
@@ -120,7 +124,10 @@ CREATE TABLE `profiles` (
 INSERT INTO `profiles` (`id`, `name`, `birthdate`, `gender`, `phone`, `location`, `biography`, `email`, `gender_id`, `user_id`) VALUES
 (1, 'Sanzar Adnan Alam', '1970-01-01', 'male', '+1-234-5678', 'Dhaka, Bangladesh', 'This user prefers to keep an air of mystery about them.', 'sanzar@example.com', 1, 1),
 (2, 'Zulker Nayeen Nahiyan', '1970-01-01', 'male', '+1-234-5678', 'Dhaka, Bangladesh', 'This user prefers to keep an air of mystery about them.', 'zulker@example.com', 1, 2),
-(3, 'Nazia Haque Noshin', '1970-01-01', 'female', '+1-234-5678', 'Dhaka, Bangladesh', 'This user prefers to keep an air of mystery about them.', 'nazia@example.com', 2, 3);
+(3, 'Nazia Haque Noshin', '1970-01-01', 'female', '+1-234-5678', 'Dhaka, Bangladesh', 'This user prefers to keep an air of mystery about them.', 'nazia@example.com', 2, 3),
+(4, 'Wile E. Coyote', '1950-01-01', 'male', '123456789', NULL, NULL, 'coyote@example.com', 1, 7),
+(5, 'Road Runner', '1950-01-01', 'male', '123456789', NULL, NULL, 'roadrunner@acme.com', 1, 8),
+(6, 'Donald Duck', '1950-01-01', 'male', '123456789', NULL, NULL, 'donald@duck.com', 1, 9);
 
 -- --------------------------------------------------------
 
@@ -147,9 +154,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `status`, `verified`, `resettable`, `roles_mask`, `registered`, `last_login`, `force_logout`) VALUES
-(1, 'sanzar@example.com', '$2y$10$Nm9z7Vu/WP4tsdCxrD1MTeZBBVV6queaiyBTjWIU6CTsMu.mOP5AK', NULL, 0, 1, 1, 1, 1640370670, 1640415169, 0),
-(2, 'zulker@example.com', '$2y$10$JKX96wJFOfu24XKhJKZH6eExp80YCC1B9U/0JDFUl/WYUdBezTDU.', NULL, 0, 1, 1, 0, 1640371903, 1640414356, 0),
-(3, 'nazia@example.com', '$2y$10$SaByXw1PoK4qaHdW656pNu39hUX/uOxSjY7ySVUp.PTE7qbLoZwbu', NULL, 0, 1, 1, 0, 1640375859, NULL, 0);
+(1, 'sanzar@example.com', '$2y$10$Nm9z7Vu/WP4tsdCxrD1MTeZBBVV6queaiyBTjWIU6CTsMu.mOP5AK', NULL, 0, 1, 1, 1, 1640370670, 1640451836, 0),
+(2, 'zulker@example.com', '$2y$10$JKX96wJFOfu24XKhJKZH6eExp80YCC1B9U/0JDFUl/WYUdBezTDU.', NULL, 0, 1, 1, 0, 1640371903, 1640451378, 0),
+(3, 'nazia@example.com', '$2y$10$SaByXw1PoK4qaHdW656pNu39hUX/uOxSjY7ySVUp.PTE7qbLoZwbu', NULL, 0, 1, 1, 0, 1640375859, 1640452139, 0),
+(7, 'coyote@example.com', '$2y$10$4pZnMlwrdIALtIs2KyV1D.DLutc81l.vf.QiA5DTCkJkgO58g48zC', NULL, 0, 1, 1, 0, 1640431887, NULL, 0),
+(8, 'roadrunner@acme.com', '$2y$10$r/w3l0tFVpD.A5x/txNbnOBAkgG0k.LXQpEZ1/77uC1fC9BHPz3oG', NULL, 0, 1, 1, 0, 1640436468, NULL, 0),
+(9, 'donald@duck.com', '$2y$10$RiLhEu391MSK9eAZfxlJCeTZ1rFwf755kCBK/11lRUu32id9lSt5q', NULL, 0, 1, 1, 0, 1640450619, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -179,6 +189,13 @@ CREATE TABLE `users_remembered` (
   `token` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `expires` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users_remembered`
+--
+
+INSERT INTO `users_remembered` (`id`, `user`, `selector`, `token`, `expires`) VALUES
+(3, 9, 'UV_wYNrrZ8C8AIRPVru_spCK', '$2y$10$uN2w8GBtmHj7fj/3qtzjR.DxVopz7veZUlXrHXDkvl0NX2wNvXiLi', 1671988087);
 
 -- --------------------------------------------------------
 
@@ -212,8 +229,8 @@ CREATE TABLE `users_throttling` (
 --
 
 INSERT INTO `users_throttling` (`bucket`, `tokens`, `replenished_at`, `expires_at`) VALUES
-('CUeQSH1MUnRpuE3Wqv_fI3nADvMpK_cg6VpYK37vgIw', 4, 1640424393, 1640856393),
-('ejWtPDKvxt-q7LZ3mFjzUoIWKJYzu47igC8Jd9mffFk', 74, 1640424393, 1640964393);
+('CUeQSH1MUnRpuE3Wqv_fI3nADvMpK_cg6VpYK37vgIw', 3.32757, 1640450619, 1640882619),
+('ejWtPDKvxt-q7LZ3mFjzUoIWKJYzu47igC8Jd9mffFk', 61.353, 1640452139, 1640992139);
 
 --
 -- Indexes for dumped tables
@@ -298,7 +315,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `form_submissions`
 --
 ALTER TABLE `form_submissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `gender`
@@ -310,13 +327,13 @@ ALTER TABLE `gender`
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users_confirmations`
@@ -328,7 +345,7 @@ ALTER TABLE `users_confirmations`
 -- AUTO_INCREMENT for table `users_remembered`
 --
 ALTER TABLE `users_remembered`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users_resets`
