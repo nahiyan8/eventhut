@@ -16,8 +16,21 @@ a {
   text-decoration: none !important;
 }
 
+/* navbar */
 .navbar {
   z-index: 1;
+}
+
+#signin-button, #signup-button {
+  transition: ease 0.1s all;
+}
+
+#signin-button:hover, #signup-button:hover {
+  color: lightgray !important;
+}
+
+#signup-button:hover {
+  border-color: lightgray !important;
 }
 
 /* home page */
@@ -44,11 +57,13 @@ a {
 }
 
 .event-card {
-  transition: ease-in-out 0.2s all;
+  transition: ease 0.1s all;
+  border: 0;
 }
 
-.event-card:hover {
-  background-color: #fff;
+.event-card:hover, .event-card:focus {
+  background-color: #fff !important;
+  box-shadow: 0 0 1px 5px #666;
 }
 
 /* user profile */
@@ -93,7 +108,6 @@ img {
 }
 .about-text p mark {
   font-weight: 600;
-  color: #20247b;
 }
 
 .about-list {
@@ -103,7 +117,6 @@ img {
   padding: 5px 0;
 }
 .about-list label {
-  color: #20247b;
   font-weight: 600;
   width: 88px;
   margin: 0;
@@ -132,7 +145,6 @@ font-size: 15px;
 }
 .about-section .counter .count {
   font-weight: 700;
-  color: #20247b;
   margin: 0 0 5px;
 }
 .about-section .counter p {
@@ -146,20 +158,13 @@ mark {
   background-position: 0 bottom;
   background-color: transparent;
   padding: 0;
-  color: currentColor;
 }
 .theme-color {
   color: #fc5356;
-}
-.dark-color {
-  color: #20247b;
 }
 
 /* event */
 .event-title {
   color: #fff;
   padding: 10px;
-}
-.event-image{
-  height: 400px;
 }

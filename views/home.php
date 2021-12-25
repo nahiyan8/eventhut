@@ -52,15 +52,18 @@ foreach ($featured_ as $event) {
     <main class="container-fluid bg-dark">
         <div class="container mb-5">
             <div class="row">
+                <h2 class="text-white text-center fw-light fs-2 mt-4">Featured</h2>
                 <!-- Featured events -->
                 <?php foreach ($featured as $event) { ?>
                 <div class="col-md-6 col-lg-3 d-flex justify-content-center">
-                    <a class="card text-dark bg-light mt-5 mb-3" style="width: 18rem;" href="/events/<?= $event->id ?>">
+                    <a class="card event-card text-dark bg-light border-0 mt-4 mb-3" style="width: 18rem;" href="/events/<?= $event->id ?>">
                         <div class="card-thumbnail">
                             <img src="<?= $event->image_url ?>" class="card-img-top">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title mb-3"><?= $event->title ?></h5>
+                            <h5 class="card-title"><?= $event->title ?></h5>
+                        </div>
+                        <div class="card-footer text-muted mb-2 small">
                             <div class="mt-2">
                                 <i class="fa fa-calendar fs-5 me-2 align-middle" aria-hidden="true"></i>
                                 <span class="fw-bold">Date:</span>

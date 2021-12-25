@@ -13,7 +13,7 @@
   <!-- Navbar -->
   <?php include 'components/navbar.php'; ?>
   <!-- Main -->
-  <main class="container col-12 col-md-10 offset-md-2">
+  <main class="container col-12 col-md-8 offset-md-2">
   </main>
     <!-- Footer -->
     <?php include 'components/footer.php'; ?>
