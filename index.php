@@ -27,6 +27,9 @@ $router->match('GET|POST', '/signup', function() {
 $router->get('/signup/completed', function() {
     include 'views/signup_completed.php';
 });
+$router->match('GET|POST', '/signout', function() {
+    include 'views/signout.php';
+});
 $router->get('/events', function() {
     include 'views/event_listing.php';
 });

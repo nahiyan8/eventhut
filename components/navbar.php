@@ -48,7 +48,7 @@ $pages = [
             <?php if ($auth->isLoggedIn()) { ?>
             <div class="dropdown">
                 <i class="fa fa-user-circle fs-3" aria-hidden="true"></i>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Hello, <?= strtok($currentUser->name, ' ') ?>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

@@ -5,8 +5,6 @@ class LegalException extends \Exception { }
 
 $error_msg = null;
 
-var_dump($_POST);
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     if (!array_key_exists('email', $_POST)) {
@@ -28,19 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: /signup/completed');
   }
   catch (\Delight\Auth\InvalidEmailException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Invalid email address';
   }
   catch (\Delight\Auth\InvalidPasswordException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Invalid password';
   }
   catch (\Delight\Auth\UserAlreadyExistsException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'User already exists';
   }
   catch (\Delight\Auth\TooManyRequestsException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Too many requests';
   }
   catch (\CustExcep\LegalException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Too many requests recently, please try again later';
   }
 }
 

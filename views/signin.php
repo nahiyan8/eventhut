@@ -17,16 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: /');
   }
   catch (\Delight\Auth\InvalidEmailException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Email is incorrect';
   }
   catch (\Delight\Auth\InvalidPasswordException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Password is incorrect';
   }
   catch (\Delight\Auth\EmailNotVerifiedException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Email is not verified';
   }
   catch (\Delight\Auth\TooManyRequestsException $e) {
-    $error_msg = $e->getMessage();
+    $error_msg = 'Too many requests recently, please try again later';
   }
 }
 

@@ -2,9 +2,19 @@
 
 use \RedBeanPHP\R as R;
 
+require 'models/Event.php';
+
 // Perform SQL query.
 $result = R::getAll('SELECT * FROM events WHERE is_featured = TRUE');
-$featured = R::convertToBeans('events', $result);
+$featured_ = R::convertToBeans('events', $result);
+$featured = [];
+
+foreach ($featured_ as $event) {
+    $event = eventFormat($event);
+    array_push($featured, $event);
+    array_push($featured, $event);
+    array_push($featured, $event);
+}
 
 // $event = R::dispense( 'events' );
 // $event->id = 123;
@@ -31,7 +41,7 @@ $featured = R::convertToBeans('events', $result);
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 
-<body class="d-flex flex-column align-items-stretch">
+<body class="d-flex flex-column">
     <!-- Navbar -->
     <?php include 'components/navbar.php'; ?>
     <!-- Banner -->
@@ -39,20 +49,36 @@ $featured = R::convertToBeans('events', $result);
         <h1 class="align-self-center text-center text-white fw-light fs-1"><i class="fa fa-university me-2" aria-hidden="true"></i> University Events</h1>
     </div>
     <!-- Main -->
-    <main class="flex-grow-1 container-fluid bg-dark">
-        <div class="col-12 col-md-8 offset-md-2">
-            <!-- Featured events -->
-            <div class="card-deck">
+    <main class="container-fluid bg-dark">
+        <div class="container mb-5">
+            <div class="row">
+                <!-- Featured events -->
                 <?php foreach ($featured as $event) { ?>
-                <a href="/events/<?= $event->id ?>">
-                    <div class="card m-2 text-dark">
-                        <img src="<?= $event->image_url ?>" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $event->title ?></h5>
-                            
+                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
+                    <a class="card text-dark bg-light mt-5 mb-3" style="width: 18rem;" href="/events/<?= $event->id ?>">
+                        <div class="card-thumbnail">
+                            <img src="<?= $event->image_url ?>" class="card-img-top">
                         </div>
-                    </div>
-                </a>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3"><?= $event->title ?></h5>
+                            <div class="mt-2">
+                                <i class="fa fa-calendar fs-5 me-2 align-middle" aria-hidden="true"></i>
+                                <span class="fw-bold">Date:</span>
+                                <?= $event->date ?>
+                            </div>
+                            <div class="mt-2">
+                                <i class="fa fa-clock-o fs-5 me-2 align-middle" aria-hidden="true"></i>
+                                <span class="fw-bold">Time:</span>
+                                <?= $event->time_begin . ' - ' . $event->time_end ?>
+                            </div>
+                            <div class="mt-2">
+                                <i class="fa fa-map fs-5 me-2 align-middle" aria-hidden="true"></i>
+                                <span class="fw-bold">Location:</span>
+                                <?= $event->location ?>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <?php } ?>
             </div>
         </div>
